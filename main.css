@@ -1,0 +1,77 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --side-bar-width: 450px;
+}
+
+body {
+  color: #222;
+  font: normal normal normal 1rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif;
+}
+
+/* Navigation Bar */
+
+nav {
+  position: fixed;
+  width: var(--side-bar-width);
+  height: 100%;
+  padding: 15px;
+  border-right: 1px solid #aaa;
+  overflow-y: scroll;
+}
+
+nav h2 {
+  border-bottom: 2px solid #222;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav .breed,
+nav .sub-breed {
+  padding: 5px 0px;
+  border-bottom: 1px solid #aaa;
+}
+
+nav .breed-wrap {
+  position: relative;
+}
+
+nav .breed-wrap .icon {
+  color: #444;
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+nav .breed-wrap .icon:hover {
+  color: #222;
+  cursor: pointer;
+}
+
+nav .sub-list {
+  overflow: hidden;
+  transition: all 0.35s ease-out;
+}
+
+nav .sub-list.responsive {
+  max-height: 0;
+  transition: all 0.35s ease-out;
+}
+
+/* Navigation Bar */
+
+.main-app {
+  margin-left: var(--side-bar-width);
+  padding: 15px;
+}
