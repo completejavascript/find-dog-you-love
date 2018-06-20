@@ -7,27 +7,44 @@
 }
 
 :root {
-  --side-bar-width: 450px;
+  --side-bar-width: 250px;
 }
 
 body {
-  color: #222;
+  color: #444;
   font: normal normal normal 1rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif;
 }
+
+.my-transition {
+  transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+}
+
+/* Header */
+
+header {
+  text-align: center;
+}
+
+/* Header */
 
 /* Navigation Bar */
 
 nav {
   position: fixed;
+  top: 0;
+  left: 0;
   width: var(--side-bar-width);
   height: 100%;
   padding: 15px;
   border-right: 1px solid #aaa;
-  overflow-y: scroll;
 }
 
 nav h2 {
-  border-bottom: 2px solid #222;
+  border-bottom: 2px solid #444;
 }
 
 nav ul {
@@ -36,8 +53,27 @@ nav ul {
 
 nav .breed,
 nav .sub-breed {
-  padding: 5px 0px;
   border-bottom: 1px solid #aaa;
+}
+
+nav .breed {
+  padding: 5px;
+}
+
+nav .sub-breed {
+  padding: 5px 0px 5px 10px;
+}
+
+nav .breed:hover,
+nav .sub-breed:hover {
+  cursor: pointer;
+  color: #222;
+}
+
+nav .breed.active,
+nav .sub-breed.active {
+  background-color: #444;
+  color: #fff;
 }
 
 nav .breed-wrap {
@@ -49,9 +85,18 @@ nav .breed-wrap .icon {
   font-size: 1rem;
   font-weight: bold;
   position: absolute;
-  right: 5px;
+  right: 0px;
+  line-height: 100%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
   top: 50%;
   transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
 }
 
 nav .breed-wrap .icon:hover {
@@ -59,14 +104,17 @@ nav .breed-wrap .icon:hover {
   cursor: pointer;
 }
 
+nav .breed-wrap .icon.active {
+  color: #fff;
+}
+
 nav .sub-list {
   overflow: hidden;
-  transition: all 0.35s ease-out;
+  max-height: 100px;
 }
 
 nav .sub-list.responsive {
   max-height: 0;
-  transition: all 0.35s ease-out;
 }
 
 /* Navigation Bar */
@@ -75,3 +123,59 @@ nav .sub-list.responsive {
   margin-left: var(--side-bar-width);
   padding: 15px;
 }
+
+/* Main - show breed images */
+
+main .grid-wrap {
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+main .grid-wrap .cell {
+  display: block;
+  width: 25%;
+  padding: 10px;
+}
+
+main .grid-wrap .cell img {
+  width: 100%;
+  height: auto;
+}
+
+/* Main - show breed images */
+
+/* Responsive */
+
+@media (max-width: 1439px) {
+  main .grid-wrap .cell {
+    width: 33.33%;
+  }
+}
+
+@media (max-width: 1279px) {
+  main .grid-wrap .cell {
+    width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --side-bar-width: 200px;
+  }
+  main .grid-wrap .cell {
+    width: 100%;
+  }
+  nav {
+    left: calc(-1 * var(--side-bar-width));
+  }
+  .main-app {
+    margin-left: 0;
+  }
+}
+
+/* Responsive */
