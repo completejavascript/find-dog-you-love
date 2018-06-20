@@ -3,7 +3,10 @@ $(document).ready(() => {
   let listAllBreedsAPI = `${baseAPI}breeds/list/all`;
 
   let $navBar = $('nav');
+  let $mainApp = $('main');
   let $gridWrap = $('main .grid-wrap');
+  let $collapseMenu = $('nav .collapse-menu');
+  let $scrollToTop = $('nav .scroll-to-top');
 
   getListAllBreeds();
 
@@ -30,6 +33,16 @@ $(document).ready(() => {
     onNavBarItemClicked(this);
   });
 
+  $collapseMenu.on("click", function() {
+    $navBar.toggleClass("show");
+  });
+
+  $scrollToTop.on("click", function() {
+    $('html,body').stop().animate({
+      scrollTop: 0
+    }, 1500);
+  });
+
   function onNavBarItemClicked(item) {
     let $target = $(item);
     let breedName = $target.attr("breed-name");
@@ -38,6 +51,7 @@ $(document).ready(() => {
     $navBar.find(".breed, .sub-breed, .icon").removeClass("active");
     $target.addClass("active");
     $target.siblings(".icon").addClass("active");
+    $navBar.removeClass("show");
     fetchImages(breedName, subBreedName);
   }
 
@@ -55,8 +69,14 @@ $(document).ready(() => {
   function renderAllBreedImages(images) {
     $gridWrap.empty();
 
-    images.forEach(element => {
-      $gridWrap.append(imgCellTemplate(element));
+    images.forEach(imgURL => {
+      let $imgCell = $(imgCellTemplate(imgURL));
+      $gridWrap.append($imgCell);
+
+      // Smooth loading images
+      $imgCell.find("img").on("load", function() {
+        $(this).addClass("loaded");
+      });
     });
   }
 
@@ -80,12 +100,28 @@ $(document).ready(() => {
 
     $navBar.append($listWrap);
     addScrollbarIfNeeded($navBar);
+    chooseRandomBreed();
+  }
+
+  function chooseRandomBreed() {
+    let $breeds = $navBar.find(".breed");
+    let random = getRandomArbitrary(0, $breeds.length);
+    let $randomBreed = $($breeds[random]);
+
+    $randomBreed.trigger("click");
+    $navBar.animate({
+      scrollTop: $randomBreed.offset().top - 30
+    }, 2000);
+  }
+
+  function getRandomArbitrary(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
   }
 
   function imgCellTemplate(url) {
     return `
       <div class="cell my-transition">
-        <img src="${url}">
+        <img src="${url}" class="my-transition">
       </div>
     `;
   }
