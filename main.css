@@ -13,6 +13,25 @@
 body {
   color: #444;
   font: normal normal normal 1rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+a {
+  color: #3da4ab;
+  text-decoration: none;
+  transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+}
+
+a:hover {
+  color: #0e9aa7;
+}
+
+h1 {
+  text-transform: uppercase;
 }
 
 .my-transition {
@@ -26,6 +45,8 @@ body {
 /* Header */
 
 header {
+  padding-top: 15px;
+  padding-bottom: 15px;
   text-align: center;
 }
 
@@ -35,12 +56,14 @@ header {
 
 nav {
   position: fixed;
+  background-color: inherit;
   top: 0;
   left: 0;
   width: var(--side-bar-width);
   height: 100%;
   padding: 15px;
   border-right: 1px solid #aaa;
+  z-index: 1001;
 }
 
 nav h2 {
@@ -61,7 +84,7 @@ nav .breed {
 }
 
 nav .sub-breed {
-  padding: 5px 0px 5px 10px;
+  padding: 5px 0px 5px 25px;
 }
 
 nav .breed:hover,
@@ -117,11 +140,36 @@ nav .sub-list.responsive {
   max-height: 0;
 }
 
+nav .btn {
+  position: fixed;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: rgba(136, 136, 136, 0.5);
+  padding: 0px 10px;
+  margin: 0;
+  cursor: pointer;
+}
+
+nav .collapse-menu {
+  opacity: 0;
+  top: 15px;
+  left: 15px;
+  z-index: 1002;
+}
+
+nav .scroll-to-top {
+  bottom: 15px;
+  right: 15px;
+  z-index: 1003;
+}
+
 /* Navigation Bar */
 
 .main-app {
   margin-left: var(--side-bar-width);
   padding: 15px;
+  z-index: 100;
 }
 
 /* Main - show breed images */
@@ -145,6 +193,15 @@ main .grid-wrap .cell {
 main .grid-wrap .cell img {
   width: 100%;
   height: auto;
+  opacity: 0;
+}
+
+main .grid-wrap .cell img.loaded {
+  opacity: 1;
+}
+
+main .grid-wrap .cell img:hover {
+  transform: scale(1.1);
 }
 
 /* Main - show breed images */
@@ -170,11 +227,23 @@ main .grid-wrap .cell img {
   main .grid-wrap .cell {
     width: 100%;
   }
+  .main-app {
+    margin-left: 0;
+  }
+  .sub-title {
+    font-size: 0.9rem;
+  }
   nav {
     left: calc(-1 * var(--side-bar-width));
   }
-  .main-app {
-    margin-left: 0;
+  nav.show {
+    left: 0;
+  }
+  nav .collapse-menu {
+    opacity: 1;
+  }
+  nav.show .collapse-menu {
+    left: calc(var(--side-bar-width) + 15px);
   }
 }
 
