@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Find Dog You Love - Lam Pham</title>
+    <link rel="stylesheet" href="./main.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Find Dog You Love - Lam Pham</title>
-  <link rel="stylesheet" href="./main.css">
-</head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-96543695-6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-96543695-6");
+    </script>
+  </head>
 
-<body>
-  <nav class="my-transition">
-    <h2>List all breeds</h2>
-    <div class="btn collapse-menu my-transition">&equiv;</div>
-    <div class="btn scroll-to-top">&uarr;</div>
-  </nav>
+  <body>
+    <nav class="my-transition">
+      <h2>List all breeds</h2>
+      <div class="btn collapse-menu my-transition">&equiv;</div>
+      <div class="btn scroll-to-top">&uarr;</div>
+    </nav>
 
-  <div class="main-app">
-    <header>
-      <h1>Find Dog You Love</h1>
-      <p class="sub-title">List all Dog Breeds Images using
-        <a href="https://dog.ceo/dog-api/" target="_blank">Dog.CEO API</a> by <a href="http://about.phamvanlam.com/" target="_blank">Lam Pham</a> - The Man who loves Dogs.</p>
-    </header>
+    <div class="main-app">
+      <header>
+        <h1>Find Dog You Love</h1>
+        <p class="sub-title">
+          List all Dog Breeds Images using
+          <a href="https://dog.ceo/dog-api/" target="_blank">Dog.CEO API</a> by
+          <a href="http://about.phamvanlam.com/" target="_blank">Lam Pham</a> -
+          The Man who loves Dogs.
+        </p>
+      </header>
 
-    <main>
-      <div class="grid-wrap">
-      </div>
-    </main>
-  </div>
+      <main>
+        <div class="grid-wrap"></div>
+      </main>
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="./main.js"></script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
 </html>
